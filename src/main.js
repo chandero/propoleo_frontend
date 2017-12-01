@@ -25,6 +25,7 @@ Vue.use(VueTimeago, {
   locale: config.locale,
   locales: {
     'en': require('vue-timeago/locales/en-US.json'),
+    'es': require('vue-timeago/locales/es-ES.json'),
     [config.locale]: require(`vue-timeago/locales/${config.locale}.json`)
   }
 })

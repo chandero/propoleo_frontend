@@ -2,16 +2,10 @@
 v-app(:dark="dark",standalone)
   v-navigation-drawer(v-model='drawer',:mini-variant.sync="mini", persistent,enable-resize-watcher, :dark="dark")
     .pa-3.text-xs-center(v-show="!mini")
-      div.display-2.py-4 Adminify
-      p {{$t('An admin dashboard based on Vuetify')}}
+      div.display-2.py-4.naranja(style="width:257px; height:111px; padding-top:0px !important;")
+         img(src="static/logofundacion.svg" witdh="257px" height="111px")
       div(style="padding-left:5em")
         v-switch(:label="(!dark ? 'Light' : 'Dark') + ' Theme'", v-model="dark", :dark="dark", hide-details)
-      div
-        v-btn(dark, tag="a", href="https://github.com/wxs77577/adminify", primary) 
-          v-icon(left, dark) star
-          span Github 
-    .pa-3.text-xs-center(v-show="mini")
-      .display-2 A
     v-divider
     v-list(dense)
       template(v-for='item in menu')
@@ -23,10 +17,11 @@ v-app(:dark="dark",standalone)
               v-list-tile-title {{ $t(item.title) }}
             v-list-tile-action
               v-icon() keyboard_arrow_down
-          
+
           v-list-tile(v-for='subItem in item.items', :key='subItem.href',:to='subItem.href', v-bind:router='!subItem.target', ripple, v-bind:disabled='subItem.disabled', v-bind:target='subItem.target')
             v-list-tile-action(v-if='subItem.icon')
-              v-icon.success--text {{ subItem.icon }}
+              <!-- v-icon.success--text {{ subItem.icon }} -->
+               <v-icon v-bind:color='subItem.color'>{{ subItem.icon }}</v-icon>
             v-list-tile-content
               v-list-tile-title {{ $t(subItem.title) }}
         v-subheader(v-else-if='item.header') {{ item.header }}
@@ -38,7 +33,7 @@ v-app(:dark="dark",standalone)
             v-list-tile-title {{ $t(item.title) }}
           v-list-tile-action(v-if='item.subAction')
             v-icon.success--text {{ item.subAction }}
-  v-toolbar.darken-1(fixed,dark,:class="theme") 
+  v-toolbar.darken-1(fixed,dark,:class="theme")
     v-toolbar-side-icon(dark, @click.native.stop='drawer = !drawer')
     v-toolbar-title {{$t(pageTitle)}}
     v-spacer
@@ -72,8 +67,8 @@ export default {
       theme: 'primary',
       mini: false,
       drawer: true,
-      locales: ['en-US', 'zh-CN'],
-      colors: ['blue', 'green', 'purple', 'red']
+      locales: ['es-CO', 'en-US', 'zh-CN'],
+      colors: ['orange', 'blue', 'green', 'purple', 'red']
     }
   },
   computed: {

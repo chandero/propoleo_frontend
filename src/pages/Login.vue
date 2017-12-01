@@ -10,7 +10,7 @@ div
           v-form(v-model='model', action='login', :fields='fields', @success='onSuccess', submitButtonText="Login")
             .flex.pb-2
               small {{$t("* Indicates required field")}}
-            
+
 </template>
 
 <style>
@@ -40,7 +40,7 @@ export default {
   methods: {
     onSuccess (data) {
       this.$store.commit('setAuth', data)
-      this.$router.replace('/')
+      this.$router.replace('/home')
     }
   },
 

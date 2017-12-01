@@ -24,7 +24,8 @@ const router = new Router({
     // path, file(*.vue), name, children
 
     route('/', 'Main', null, [
-      route('/', 'Home', 'home'),
+      route('/', 'Login', 'login'),
+      route('/home', 'Home', 'home'),
       route('/crud/:resource', 'CrudGrid', 'grid'),
       route('/crud/:resource/:id/edit', 'CrudForm', 'edit'),
       route('/crud/:resource/create', 'CrudForm', 'create'),

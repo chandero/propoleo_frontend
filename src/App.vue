@@ -1,10 +1,25 @@
 <template>
-  <div :class="{'nav-open': $sidebar.showSidebar}">
-    <router-view></router-view>
-    <!--This sidebar appears only for screens smaller than 992px-->
+  <div>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-  export default {}
+
+export default {
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+  created () {
+    // this.$http.get('/users').then(({data}) => console.log(data))
+  }
+}
 </script>
+

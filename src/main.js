@@ -1,50 +1,77 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import helper from './helper'
+global.helper = helper
+import config from './config'
+import store from './store/'
+global.store = store
 
-// Plugins
-import GlobalComponents from './globalComponents'
-import GlobalDirectives from './globalDirectives'
-import GlobalMixins from './globalMixins'
-import Notifications from './components/UIComponents/NotificationPlugin'
-import SideBar from './components/UIComponents/SidebarPlugin'
-import App from './App'
+import router from './router'
+import i18n from './i18n/'
+// import menu from './menu'
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
+import './http'
 
-// router setup
-import routes from './routes/routes'
+import 'vuetify/src/stylus/main.styl'
+import 'vuetify/src/stylus/settings/_colors.styl'
+import '@/styles/main.styl'
 
-// library imports
-import Chartist from 'chartist'
-import 'bootstrap/dist/css/bootstrap.css'
-import './assets/sass/material-dashboard.scss'
-import 'es6-promise/auto'
+import App from './App.vue'
 
-// plugin setup
-Vue.use(VueRouter)
-Vue.use(GlobalComponents)
-Vue.use(GlobalDirectives)
-Vue.use(GlobalMixins)
-Vue.use(Notifications)
-Vue.use(SideBar)
+import VueTimeago from 'vue-timeago'
 
-// configure router
-const router = new VueRouter({
-  routes, // short for routes: routes
-  linkActiveClass: 'active'
-})
-
-// global library setup
-Object.defineProperty(Vue.prototype, '$Chartist', {
-  get () {
-    return this.$root.Chartist
+Vue.use(VueTimeago, {
+  name: 'timeago', // component name, `timeago` by default
+  locale: config.locale,
+  locales: {
+    'en': require('vue-timeago/locales/en-US.json'),
+    [config.locale]: require(`vue-timeago/locales/${config.locale}.json`)
   }
 })
+
+import Dropzone from 'vue2-dropzone'
+import VueQuillEditor from 'vue-quill-editor'
+Vue.use(VueQuillEditor)
+Vue.component('dropzone', Dropzone)
+
+// import validator from 'indicative'
+import validator from 'Validator'
+global.validator = validator
+
+import VForm from './components/Form.vue'
+import VGrid from './components/Grid.vue'
+import VField from './components/Field.vue'
+
+// import Modal from './components/Modal'
+// Vue.use(Modal)
+
+Vue.component('v-form', VForm)
+Vue.component('v-grid', VGrid)
+Vue.component('v-field', VField)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  render: h => h(App),
+  i18n,
+  store,
   router,
-  data: {
-    Chartist: Chartist
+  render: h => h(App),
+  mounted () {
+
+  },
+  methods: {
+    back () {
+      this.$router.go(-1)
+    }
+  },
+  created () {
+    // this.$http.get('/users/1').then(({data}) => console.log(data))
+    global.$t = this.$t
+    // fetch menu from server
+    this.$http.get('/menu').then(({data}) => {
+      this.$store.commit('setMenu', data)
+    })
+    this.$store.dispatch('checkPageTitle', this.$route.path)
+    this.$store.dispatch('checkAuth')
   }
 })

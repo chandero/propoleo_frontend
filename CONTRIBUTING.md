@@ -1,19 +1,8 @@
-* Fork the repository
-* Clone it on your PC
-* `npm install` or `yarn install`
-* Make changes, commit open PR 
+# Contributing
 
-### Notes
-* If you use 3rd party libraries/components in more than 1 place make sure to define them globally for ease of use
-  Example
-  ```js
-  Object.defineProperty(Vue.prototype, '$Chartist', {
-    get() {
-      return Chartist;
-    }
-  });
-  ```
-* Please don't use jQuery or jQuery based plugins since there are many pure Vue alternatives
-* Write unit tests for your custom components. See fgInput.spec and paper-table.spec
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+1. Check if the feature or bug exists in `Issues`.
+1. If not, put an `issue`.If you wanna work on it, please let us know.
+1. `fork` this repository.
+1. Clone your own repository and make your changes.
+1. Commit your changes with a short message and push to your repository.
+1. Send a `Pull Request`.

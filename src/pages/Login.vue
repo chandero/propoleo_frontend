@@ -2,10 +2,10 @@
 div
   v-dialog(:value='true', persistent='')
     v-card(hover='', style='background:white')
-      v-card-row.deep-purple.darken-1
+      v-flex.deep-purple.darken-1
         v-card-title.white--text
           .text-xs-center  {{$t("Login")}}
-      v-card-row
+      v-flex
         v-card-text.pt-4
           v-form(v-model='model', action='login', :fields='fields', @success='onSuccess', submitButtonText="Login")
             .flex.pb-2

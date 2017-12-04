@@ -2,7 +2,7 @@
 div()
   v-layout
     v-flex(md4)
-      
+
     v-flex(md8)
       v-form.row.jr(:inline='true', v-model='filters.model', v-if="filters.fields", :fields='filters.fields', @submit='doSearch', submitButtonText='Search', submitButtonIcon='search')
   v-card
@@ -10,7 +10,7 @@ div()
       v-btn(router,fab,absolute,top,right,dark,class="green", :to="{name: 'create', params: {resource}}",v-if="options.create !== false")
         v-icon add
     v-data-table(:headers='columns', :items='items',:total-items="pagination.totalItems",hide-actions, :pagination.sync="pagination", :loading="loading")
-      template(slot='items', scope='props')
+      template(slot='items', slot-scope='props')
         tr
           td(:class="column.left? '': 'text-xs-right'", v-for='column in columns', v-html="getColumnData(props.item, column)")
           td(v-if='actions !== false', width='160')
@@ -27,7 +27,7 @@ div()
     .jc
       v-pagination.ma-3(v-model='pagination.page', :length='totalPages', circle)
 
-    
+
   v-dialog(v-model="isShowEdit", width="70%")
     v-card
       v-card-title {{$t('Edit')}} \#{{currentItem.id}}

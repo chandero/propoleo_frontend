@@ -69,9 +69,6 @@ new Vue({
     // this.$http.get('/users/1').then(({data}) => console.log(data))
     global.$t = this.$t
     // fetch menu from server
-    this.$http.get('/menu').then(({data}) => {
-      this.$store.commit('setMenu', data)
-    })
     this.$store.dispatch('checkPageTitle', this.$route.path)
     this.$store.dispatch('checkAuth')
   }

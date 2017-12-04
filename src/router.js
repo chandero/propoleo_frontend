@@ -24,7 +24,6 @@ const router = new Router({
     // path, file(*.vue), name, children
 
     route('/', 'Main', null, [
-      route('/', 'Login', 'login'),
       route('/home', 'Home', 'home'),
       route('/crud/:resource', 'CrudGrid', 'grid'),
       route('/crud/:resource/:id/edit', 'CrudForm', 'edit'),
@@ -36,10 +35,9 @@ const router = new Router({
       route('/theme', 'Theme'),
       route('/chat', 'Chat'),
       route('/about', 'About')
-    ])
-
-    // Global redirect for 404
-    // { path: '*', redirect: '/error', query: {code: 404, message: 'Page Not Found.'} }
+    ]),
+          // Global redirect for 404
+    { path: '*', redirect: '/error', query: {code: 404, message: 'Page Not Found.'} }
   ]
 })
 

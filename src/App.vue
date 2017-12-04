@@ -19,6 +19,7 @@ export default {
   },
   created () {
     // this.$http.get('/users').then(({data}) => console.log(data))
+    this.$router.replace('/login')
   }
 }
 </script>

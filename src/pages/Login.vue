@@ -26,8 +26,8 @@ export default {
   data () {
     return {
       model: {
-        username: 'admin',
-        password: '123456'
+        username: '',
+        password: ''
       },
 
       fields: {
@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     onSuccess (data) {
+      console.log('login data:' + JSON.stringify(data))
       this.$store.commit('setAuth', data)
       this.$router.replace('/home')
     }

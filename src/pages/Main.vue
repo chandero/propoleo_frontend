@@ -10,21 +10,20 @@ v-app(:dark="dark",standalone)
     v-list(dense)
       template(v-for='item in menu')
         v-list-group(v-if='item.items', v-bind:group='item.group')
-          v-list-tile(:to='item.href', slot='item', :title="item.title")
+          v-list-tile(:to='item.href', slot='item', :title='$t(item.title)')
             v-list-tile-action
-              v-icon() {{ item.icon }}
+              v-icon(:class='item.color') {{ item.icon }}
             v-list-tile-content
               v-list-tile-title {{ $t(item.title) }}
             v-list-tile-action
               v-icon() keyboard_arrow_down
-
           v-list-tile(v-for='subItem in item.items', :key='subItem.href',:to='subItem.href', v-bind:router='!subItem.target', ripple, v-bind:disabled='subItem.disabled', v-bind:target='subItem.target')
             v-list-tile-action(v-if='subItem.icon')
               <!-- v-icon.success--text {{ subItem.icon }} -->
-               <v-icon v-bind:color='subItem.color'>{{ subItem.icon }}</v-icon>
+               <v-icon :class='subItem.color'>{{ subItem.icon }}</v-icon>
             v-list-tile-content
               v-list-tile-title {{ $t(subItem.title) }}
-        v-subheader(v-else-if='item.header') {{ item.header }}
+        v-subheader(v-else-if='item.header') {{ $t(item.header) }}
         v-divider(v-else-if='item.divider')
         v-list-tile(v-else,:to='item.href', router, ripple, v-bind:disabled='item.disabled', :title="item.title")
           v-list-tile-action

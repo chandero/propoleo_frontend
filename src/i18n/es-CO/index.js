@@ -28,5 +28,18 @@ export default {
   'An admin dashboard based on Vuetify': 'Una tablero administrativo basado en Vuetify',
   'Edit': 'Editar',
   'Close': 'Cerrar',
-  'Field should be unique.': 'Campo debe ser único.'
+  'Field should be unique.': 'Campo debe ser único.',
+  'Placement': 'Colocación',
+  'Credit': 'Crédito',
+  'Request': 'Solicitud',
+  'Manage': 'Gestionar',
+  'Notify': 'Notificar',
+  'Analyze': 'Analisar',
+  'Disburse': 'Desembolsar',
+  'Consult': 'Consultar',
+  'Liquidation Table': 'Tabla de Liquidación',
+  'Credit Status': 'Estado de Crédito',
+  'Approve': 'Aprobar',
+  'Approver': 'Ente Aprobador',
+  'System': 'Sistema'
 }
